@@ -24,6 +24,8 @@ final class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    settingLayout()
+    settingStyle()
     
   }
 }
@@ -145,6 +147,32 @@ private extension ViewController {
     )
   }
   
+  func settingStyle() {
+    
+    view.backgroundColor = .darkGray
+    
+    trafficLightHousingView.backgroundColor = .black
+    
+    verticalSupportView.backgroundColor = .black
+    
+    horizontalSupportView.backgroundColor = .black
+    
+    redCircleView.backgroundColor = .red.withAlphaComponent(0.5)
+    redCircleView.layer.cornerRadius = 40 / 2
+    
+    yellowCircleView.backgroundColor = .yellow.withAlphaComponent(0.5)
+    yellowCircleView.layer.cornerRadius = 40 / 2
+    
+    greenCircleView.backgroundColor = .green.withAlphaComponent(0.5)
+    greenCircleView.layer.cornerRadius = 40 / 2
+    
+    trafficLightStartButton.backgroundColor = .blue
+    trafficLightStartButton.setTitle("START", for: .normal)
+    trafficLightStartButton.setTitleColor(.black, for: .normal)
+    trafficLightStartButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+  }
+  @objc
+  func buttonAction() [
 }
 
 
