@@ -27,7 +27,6 @@ final class ViewController: UIViewController {
     
     settingLayout()
     settingStyle()
-    
   }
 }
 // MARK: - Private functions
@@ -35,11 +34,12 @@ final class ViewController: UIViewController {
 private extension ViewController {
   func settingLayout() {
     [trafficLightHousingView, verticalSupportView, horizontalSupportView,
-     trafficLightStartButton].forEach {$0.translatesAutoresizingMaskIntoConstraints = false
+     trafficLightStartButton].forEach { 
+      $0.translatesAutoresizingMaskIntoConstraints = false
       view.addSubview($0)
     }
-    [redCircleView, yellowCircleView, greenCircleView].forEach
-    {$0.translatesAutoresizingMaskIntoConstraints = false
+    [redCircleView, yellowCircleView, greenCircleView].forEach {
+      $0.translatesAutoresizingMaskIntoConstraints = false
       trafficLightHousingView.addSubview($0)
     }
     
@@ -47,7 +47,7 @@ private extension ViewController {
       [
         trafficLightHousingView.topAnchor.constraint(
           equalTo: view.topAnchor,
-          constant: Constants.trafficLightHousingTop
+          constant: Constants.trafficLightHousingTopPadding
         ),
         trafficLightHousingView.centerXAnchor.constraint(
           equalTo: view.centerXAnchor
@@ -81,7 +81,7 @@ private extension ViewController {
         
         redCircleView.topAnchor.constraint(
           equalTo: trafficLightHousingView.topAnchor,
-          constant: Constants.distanceCircleFromTrafficLightHousing
+          constant: Constants.distanceCircleFromTrafficLightHousingPadding
         ),
         redCircleView.widthAnchor.constraint(
           equalToConstant: Constants.widthHeightCircle
@@ -91,16 +91,16 @@ private extension ViewController {
         ),
         redCircleView.leadingAnchor.constraint(
           equalTo: trafficLightHousingView.leadingAnchor,
-          constant: Constants.distanceCircleFromTrafficLightHousing
+          constant: Constants.distanceCircleFromTrafficLightHousingPadding
         ),
         redCircleView.trailingAnchor.constraint(
           equalTo: trafficLightHousingView.trailingAnchor,
-          constant: -Constants.distanceCircleFromTrafficLightHousing
+          constant: -Constants.distanceCircleFromTrafficLightHousingPadding
         ),
         
         yellowCircleView.topAnchor.constraint(
           equalTo: redCircleView.bottomAnchor,
-          constant: Constants.distanceCircleFromTrafficLightHousing
+          constant: Constants.distanceCircleFromTrafficLightHousingPadding
         ),
         yellowCircleView.widthAnchor.constraint(
           equalToConstant: Constants.widthHeightCircle
@@ -110,16 +110,16 @@ private extension ViewController {
         ),
         yellowCircleView.leadingAnchor.constraint(
           equalTo: trafficLightHousingView.leadingAnchor,
-          constant: Constants.distanceCircleFromTrafficLightHousing
+          constant: Constants.distanceCircleFromTrafficLightHousingPadding
         ),
         yellowCircleView.trailingAnchor.constraint(
           equalTo: trafficLightHousingView.trailingAnchor,
-          constant: -Constants.distanceCircleFromTrafficLightHousing
+          constant: -Constants.distanceCircleFromTrafficLightHousingPadding
         ),
         
         greenCircleView.topAnchor.constraint(
           equalTo: yellowCircleView.bottomAnchor,
-          constant: Constants.distanceCircleFromTrafficLightHousing
+          constant: Constants.distanceCircleFromTrafficLightHousingPadding
         ),
         greenCircleView.widthAnchor.constraint(
           equalToConstant: Constants.widthHeightCircle
@@ -129,20 +129,20 @@ private extension ViewController {
         ),
         greenCircleView.leadingAnchor.constraint(
           equalTo: trafficLightHousingView.leadingAnchor,
-          constant: Constants.distanceCircleFromTrafficLightHousing
+          constant: Constants.distanceCircleFromTrafficLightHousingPadding
         ),
         greenCircleView.trailingAnchor.constraint(
           equalTo: trafficLightHousingView.trailingAnchor,
-          constant: -Constants.distanceCircleFromTrafficLightHousing
+          constant: -Constants.distanceCircleFromTrafficLightHousingPadding
         ),
         greenCircleView.bottomAnchor.constraint(
           equalTo: trafficLightHousingView.bottomAnchor,
-          constant: -Constants.distanceCircleFromTrafficLightHousing
+          constant: -Constants.distanceCircleFromTrafficLightHousingPadding
         ),
         
         trafficLightStartButton.topAnchor.constraint(
           equalTo: horizontalSupportView.bottomAnchor,
-          constant: Constants.trafficLightStartButtonTop
+          constant: Constants.trafficLightHousingTopPadding
         ),
         trafficLightStartButton.centerXAnchor.constraint(
           equalTo: view.centerXAnchor
@@ -152,7 +152,6 @@ private extension ViewController {
   }
   
   func settingStyle() {
-    
     view.backgroundColor = .darkGray
     
     trafficLightHousingView.backgroundColor = .black
@@ -161,13 +160,13 @@ private extension ViewController {
     
     horizontalSupportView.backgroundColor = .black
     
-    redCircleView.backgroundColor = .red.withAlphaComponent(0.5)
+    redCircleView.backgroundColor = .red.withAlphaComponent(Constants.transparencyCircle)
     redCircleView.layer.cornerRadius = Constants.widthHeightCircle / 2
     
-    yellowCircleView.backgroundColor = .yellow.withAlphaComponent(0.5)
+    yellowCircleView.backgroundColor = .yellow.withAlphaComponent(Constants.transparencyCircle)
     yellowCircleView.layer.cornerRadius = Constants.widthHeightCircle / 2
     
-    greenCircleView.backgroundColor = .green.withAlphaComponent(0.5)
+    greenCircleView.backgroundColor = .green.withAlphaComponent(Constants.transparencyCircle)
     greenCircleView.layer.cornerRadius = Constants.widthHeightCircle / 2
     
     trafficLightStartButton.backgroundColor = .blue
@@ -192,38 +191,41 @@ private extension ViewController {
   @objc
   func buttonAction() {
     let newTrafficLightState = switchTrafficLight(currentState: trafficLightType)
-    trafficLightType = newTrafficLightState  // сохранили новое значение
+    trafficLightType = newTrafficLightState
     
     switch newTrafficLightState {
     case .red:
       trafficLightStartButton.backgroundColor = .red
       trafficLightStartButton.setTitle("NEXT", for: .normal)
-      yellowCircleView.backgroundColor = .yellow.withAlphaComponent(0.5)
-      greenCircleView.backgroundColor = .green.withAlphaComponent(0.5)
+      yellowCircleView.backgroundColor = .yellow.withAlphaComponent(Constants.transparencyCircle)
+      greenCircleView.backgroundColor = .green.withAlphaComponent(Constants.transparencyCircle)
       redCircleView.backgroundColor = .red
     case .yellow:
       trafficLightStartButton.backgroundColor = .yellow
       trafficLightStartButton.setTitle("NEXT", for: .normal)
-      greenCircleView.backgroundColor = .green.withAlphaComponent(0.5)
+      greenCircleView.backgroundColor = .green.withAlphaComponent(Constants.transparencyCircle)
       yellowCircleView.backgroundColor = .yellow
-      redCircleView.backgroundColor = .red.withAlphaComponent(0.5)
+      redCircleView.backgroundColor = .red.withAlphaComponent(Constants.transparencyCircle)
     case .green:
       trafficLightStartButton.backgroundColor = .green
       trafficLightStartButton.setTitle("NEXT", for: .normal)
       greenCircleView.backgroundColor = .green
-      yellowCircleView.backgroundColor = .yellow.withAlphaComponent(0.5)
-      redCircleView.backgroundColor = .red.withAlphaComponent(0.5)
+      yellowCircleView.backgroundColor = .yellow.withAlphaComponent(Constants.transparencyCircle)
+      redCircleView.backgroundColor = .red.withAlphaComponent(Constants.transparencyCircle)
     }
   }
 }
+
 //MARK: - Constants
+
 private enum Constants  {
-  static let trafficLightHousingTop: CGFloat = 150
+  static let trafficLightHousingTopPadding: CGFloat = 150
   static let verticalSupporWidth: CGFloat = 20
   static let verticalSupporHeight: CGFloat = 140
   static let horizontalSupportWidth: CGFloat = 100
   static let horizontalSupportHeight: CGFloat = 20
-  static let distanceCircleFromTrafficLightHousing: CGFloat = 16
+  static let distanceCircleFromTrafficLightHousingPadding: CGFloat = 16
   static let widthHeightCircle: CGFloat = 50
-  static let trafficLightStartButtonTop: CGFloat = 75
+  static let trafficLightStartButtonTopPadding: CGFloat = 75
+  static let transparencyCircle:CGFloat = 0.5
 }
