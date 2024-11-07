@@ -1,5 +1,5 @@
 //
-//  View.Controller.swift
+//  ViewController.swift
 //  Trafficlights
 //
 //  Created by Ксения Гагина on 06.11.2024.
@@ -155,9 +155,7 @@ private extension ViewController {
     view.backgroundColor = .darkGray
     
     trafficLightHousingView.backgroundColor = .black
-    
     verticalSupportView.backgroundColor = .black
-    
     horizontalSupportView.backgroundColor = .black
     
     redCircleView.backgroundColor = .red.withAlphaComponent(Constants.transparencyCircle)
@@ -188,6 +186,7 @@ private extension ViewController {
       return .red
     }
   }
+  
   @objc
   func buttonAction() {
     let newTrafficLightState = switchTrafficLight(currentState: trafficLightType)

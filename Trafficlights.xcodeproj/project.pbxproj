@@ -10,7 +10,7 @@
 		5350BBA62CDAAB880006ED94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5350BBA52CDAAB880006ED94 /* AppDelegate.swift */; };
 		5350BBA82CDAAB880006ED94 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5350BBA72CDAAB880006ED94 /* SceneDelegate.swift */; };
 		5350BBAF2CDAAB8A0006ED94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5350BBAE2CDAAB8A0006ED94 /* Assets.xcassets */; };
-		5350BBBC2CDACE520006ED94 /* View.Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5350BBBB2CDACE520006ED94 /* View.Controller.swift */; };
+		5350BBBC2CDACE520006ED94 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5350BBBB2CDACE520006ED94 /* ViewController.swift */; };
 		5350BBBE2CDACEA90006ED94 /* TrafficLightType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5350BBBD2CDACEA90006ED94 /* TrafficLightType.swift */; };
 /* End PBXBuildFile section */
 
@@ -20,7 +20,7 @@
 		5350BBA72CDAAB880006ED94 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5350BBAE2CDAAB8A0006ED94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5350BBB32CDAAB8A0006ED94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5350BBBB2CDACE520006ED94 /* View.Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.Controller.swift; sourceTree = "<group>"; };
+		5350BBBB2CDACE520006ED94 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5350BBBD2CDACEA90006ED94 /* TrafficLightType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLightType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -56,7 +56,7 @@
 			children = (
 				5350BBA52CDAAB880006ED94 /* AppDelegate.swift */,
 				5350BBA72CDAAB880006ED94 /* SceneDelegate.swift */,
-				5350BBBB2CDACE520006ED94 /* View.Controller.swift */,
+				5350BBBB2CDACE520006ED94 /* ViewController.swift */,
 				5350BBBD2CDACEA90006ED94 /* TrafficLightType.swift */,
 				5350BBAE2CDAAB8A0006ED94 /* Assets.xcassets */,
 				5350BBB32CDAAB8A0006ED94 /* Info.plist */,
@@ -134,7 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5350BBA62CDAAB880006ED94 /* AppDelegate.swift in Sources */,
-				5350BBBC2CDACE520006ED94 /* View.Controller.swift in Sources */,
+				5350BBBC2CDACE520006ED94 /* ViewController.swift in Sources */,
 				5350BBBE2CDACEA90006ED94 /* TrafficLightType.swift in Sources */,
 				5350BBA82CDAAB880006ED94 /* SceneDelegate.swift in Sources */,
 			);
