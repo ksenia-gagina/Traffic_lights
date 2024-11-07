@@ -227,5 +227,5 @@ private enum Constants  {
   static let distanceCircleFromTrafficLightHousingPadding: CGFloat = 16
   static let widthHeightCircle: CGFloat = 50
   static let trafficLightStartButtonTopPadding: CGFloat = 75
-  static let transparencyCircle:CGFloat = 0.5
+  static let transparencyCircle: CGFloat = 0.5
 }
