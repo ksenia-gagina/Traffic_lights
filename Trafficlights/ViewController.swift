@@ -7,13 +7,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    view.backgroundColor = .red
-  }
-
+//MARK: - Private propertes
+  
+  private let trafficlightsСorpusView = UIView()
+  private let verticalStackCircles = UIStackView()
+  private let redCircleView = UIView()
+  private let yellowCircleView = UIView()
+  private let greenCircleView = UIView()
+  private let verticalSupportView = UIView()
+  private let horizontalSupportView = UIView()
+  private let trafficlightStartButton = UIButton()
 
 }
 
