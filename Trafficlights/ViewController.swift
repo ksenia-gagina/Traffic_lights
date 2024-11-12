@@ -19,6 +19,7 @@ final class ViewController: UIViewController {
   private let verticalSupportView = UIView()
   private let horizontalSupportView = UIView()
   private let trafficlightStartButton = UIButton()
+  private var trafficLightType: TrafficLightType = .red
   
   //MARK: - Internal function
   
@@ -155,10 +156,47 @@ private extension ViewController{
     trafficlightStartButton.setTitleColor(.black, for: .normal)
     trafficlightStartButton.setTitle("START", for: .normal)
     trafficlightStartButton.backgroundColor = .blue
-    //trafficlightStartButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-    
+    trafficlightStartButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
   }
   
+  @objc
+  func buttonAction() {
+    switchState( )
+    setColorForTraddicLight()
+  }
   
+  func switchState( ) {
+    switch trafficLightType {
+    case .red:
+      trafficLightType = .yellow
+    case .yellow:
+      trafficLightType = .green
+    case .green:
+      trafficLightType = .red
+    }
+  }
+  
+  func setColorForTraddicLight() {
+    switch  trafficLightType {
+    case .red:
+      trafficlightStartButton.backgroundColor = .red
+      trafficlightStartButton.setTitle("NEXT", for: .normal)
+      yellowCircleView.backgroundColor = .yellow.withAlphaComponent(0.5)
+      greenCircleView.backgroundColor = .green.withAlphaComponent(0.5)
+      redCircleView.backgroundColor = .red
+    case .yellow:
+      trafficlightStartButton.backgroundColor = .yellow
+      trafficlightStartButton.setTitle("NEXT", for: .normal)
+      greenCircleView.backgroundColor = .green.withAlphaComponent(0.5)
+      yellowCircleView.backgroundColor = .yellow
+      redCircleView.backgroundColor = .red.withAlphaComponent(0.5)
+    case .green:
+      trafficlightStartButton.backgroundColor = .green
+      trafficlightStartButton.setTitle("NEXT", for: .normal)
+      greenCircleView.backgroundColor = .green
+      yellowCircleView.backgroundColor = .yellow.withAlphaComponent(0.5)
+      redCircleView.backgroundColor = .red.withAlphaComponent(0.5)
+      
+    }
+  }
 }
-
