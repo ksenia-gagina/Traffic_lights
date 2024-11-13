@@ -24,7 +24,7 @@ final class ViewController: UIViewController {
   //MARK: - Internal function
   
   override func viewDidLoad() {
-    super .viewDidLoad()
+    super.viewDidLoad()
     
     settingLayout()
     settingStyle()
@@ -40,7 +40,7 @@ private extension ViewController{
       $0.translatesAutoresizingMaskIntoConstraints = false
       view.addSubview($0)
     }
-    [redCircleView, yellowCircleView,greenCircleView].forEach{
+    [redCircleView, yellowCircleView, greenCircleView].forEach{
       $0.translatesAutoresizingMaskIntoConstraints = false
       verticalStackCircles.addArrangedSubview($0)
     }
@@ -49,12 +49,11 @@ private extension ViewController{
       trafficlightsСorpusView.addSubview($0)
     }
     
-    
     NSLayoutConstraint.activate(
       [
         trafficlightsСorpusView.topAnchor.constraint(
           equalTo: view.topAnchor,
-          constant: 125
+          constant: Constants.trafficlightsСorpusTopPadding
         ),
         trafficlightsСorpusView.centerXAnchor.constraint(
           equalTo: view.centerXAnchor
@@ -62,45 +61,45 @@ private extension ViewController{
         
         verticalStackCircles.topAnchor.constraint(
           equalTo: trafficlightsСorpusView.topAnchor,
-          constant: 15
+          constant: Constants.verticalStackCirclesDistance
         ),
         verticalStackCircles.trailingAnchor.constraint(
           equalTo: trafficlightsСorpusView.trailingAnchor,
-          constant: -15
+          constant: -Constants.verticalStackCirclesDistance
         ),
         verticalStackCircles.bottomAnchor.constraint(
           equalTo: trafficlightsСorpusView.bottomAnchor,
-          constant: -15
+          constant: -Constants.verticalStackCirclesDistance
         ),
         verticalStackCircles.leadingAnchor.constraint(
           equalTo: trafficlightsСorpusView.leadingAnchor,
-          constant: 15
+          constant: Constants.verticalStackCirclesDistance
         ),
         
         redCircleView.widthAnchor.constraint(
-          equalToConstant: 75
+          equalToConstant: Constants.widthHeightCircle
         ),
         redCircleView.heightAnchor.constraint(
-          equalToConstant: 75
+          equalToConstant: Constants.widthHeightCircle
         ),
         yellowCircleView.widthAnchor.constraint(
-          equalToConstant: 75
+          equalToConstant: Constants.widthHeightCircle
         ),
         yellowCircleView.heightAnchor.constraint(
-          equalToConstant: 75
+          equalToConstant: Constants.widthHeightCircle
         ),
         greenCircleView.widthAnchor.constraint(
-          equalToConstant: 75
+          equalToConstant: Constants.widthHeightCircle
         ),
         greenCircleView.heightAnchor.constraint(
-          equalToConstant: 75
+          equalToConstant: Constants.widthHeightCircle
         ),
         
         verticalSupportView.widthAnchor.constraint(
-          equalToConstant: 25
+          equalToConstant: Constants.verticalSupportWidt
         ),
         verticalSupportView.heightAnchor.constraint(
-          equalToConstant: 125
+          equalToConstant: Constants.verticalSupportHeight
         ),
         verticalSupportView.topAnchor.constraint(
           equalTo: trafficlightsСorpusView.bottomAnchor
@@ -110,10 +109,10 @@ private extension ViewController{
         ),
         
         horizontalSupportView.widthAnchor.constraint(
-          equalToConstant: 75
+          equalToConstant: Constants.horizontalSupportWidt
         ),
         horizontalSupportView.heightAnchor.constraint(
-          equalToConstant: 25
+          equalToConstant: Constants.horizontalSupportHeight
         ),
         horizontalSupportView.centerXAnchor.constraint(
           equalTo: view.centerXAnchor
@@ -124,7 +123,7 @@ private extension ViewController{
         
         trafficlightStartButton.topAnchor.constraint(
           equalTo: horizontalSupportView.bottomAnchor,
-          constant: 50
+          constant: Constants.trafficlightStartButtonTopPadding
         ),
         trafficlightStartButton.centerXAnchor.constraint(
           equalTo: view.centerXAnchor
@@ -141,17 +140,17 @@ private extension ViewController{
     horizontalSupportView.backgroundColor = .black
     
     verticalStackCircles.axis = .vertical
-    verticalStackCircles.spacing = 14
+    verticalStackCircles.spacing = Constants.verticalStackCirclesSpacing
     verticalStackCircles.distribution = .fill
     
-    redCircleView.backgroundColor = .red.withAlphaComponent(0.5)
-    redCircleView.layer.cornerRadius = 75 / 2
+    redCircleView.backgroundColor = .red.withAlphaComponent(Constants.transparencyCircle)
+    redCircleView.layer.cornerRadius = Constants.widthHeightCircle / 2
     
-    yellowCircleView.backgroundColor = .yellow.withAlphaComponent(0.5)
-    yellowCircleView.layer.cornerRadius = 75 / 2
+    yellowCircleView.backgroundColor = .yellow.withAlphaComponent(Constants.transparencyCircle)
+    yellowCircleView.layer.cornerRadius = Constants.widthHeightCircle / 2
     
-    greenCircleView.backgroundColor = .green.withAlphaComponent(0.5)
-    greenCircleView.layer.cornerRadius = 75 / 2
+    greenCircleView.backgroundColor = .green.withAlphaComponent(Constants.transparencyCircle)
+    greenCircleView.layer.cornerRadius = Constants.widthHeightCircle / 2
     
     trafficlightStartButton.setTitleColor(.black, for: .normal)
     trafficlightStartButton.setTitle("START", for: .normal)
@@ -181,22 +180,36 @@ private extension ViewController{
     case .red:
       trafficlightStartButton.backgroundColor = .red
       trafficlightStartButton.setTitle("NEXT", for: .normal)
-      yellowCircleView.backgroundColor = .yellow.withAlphaComponent(0.5)
-      greenCircleView.backgroundColor = .green.withAlphaComponent(0.5)
+      yellowCircleView.backgroundColor = .yellow.withAlphaComponent(Constants.transparencyCircle)
+      greenCircleView.backgroundColor = .green.withAlphaComponent(Constants.transparencyCircle)
       redCircleView.backgroundColor = .red
     case .yellow:
       trafficlightStartButton.backgroundColor = .yellow
       trafficlightStartButton.setTitle("NEXT", for: .normal)
-      greenCircleView.backgroundColor = .green.withAlphaComponent(0.5)
+      greenCircleView.backgroundColor = .green.withAlphaComponent(Constants.transparencyCircle)
       yellowCircleView.backgroundColor = .yellow
-      redCircleView.backgroundColor = .red.withAlphaComponent(0.5)
+      redCircleView.backgroundColor = .red.withAlphaComponent(Constants.transparencyCircle)
     case .green:
       trafficlightStartButton.backgroundColor = .green
       trafficlightStartButton.setTitle("NEXT", for: .normal)
       greenCircleView.backgroundColor = .green
-      yellowCircleView.backgroundColor = .yellow.withAlphaComponent(0.5)
-      redCircleView.backgroundColor = .red.withAlphaComponent(0.5)
-      
+      yellowCircleView.backgroundColor = .yellow.withAlphaComponent(Constants.transparencyCircle)
+      redCircleView.backgroundColor = .red.withAlphaComponent(Constants.transparencyCircle)
     }
   }
+}
+
+//MARK: - Constants
+
+private enum Constants {
+  static let trafficlightsСorpusTopPadding: CGFloat = 125
+  static let verticalStackCirclesDistance: CGFloat = 15
+  static let widthHeightCircle: CGFloat = 75
+  static let verticalSupportWidt: CGFloat = 25
+  static let verticalSupportHeight: CGFloat = 125
+  static let horizontalSupportWidt: CGFloat = 75
+  static let horizontalSupportHeight: CGFloat = 25
+  static let trafficlightStartButtonTopPadding: CGFloat = 50
+  static let verticalStackCirclesSpacing: CGFloat = 14
+  static let transparencyCircle: CGFloat = 0.5
 }
