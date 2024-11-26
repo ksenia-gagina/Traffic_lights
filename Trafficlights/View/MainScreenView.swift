@@ -1,13 +1,28 @@
 //
-//  ViewController.swift
+//  Untitled.swift
 //  Trafficlights
 //
-//  Created by Ксения Гагина on 05.11.2024.
+//  Created by Ксения Гагина on 27.11.2024.
 //
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class MainScreenView: UIView {
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    
+    settingLayout()
+    settingStyle()
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  //MARK: - Internal propertes
+  
+  var buttonAction: ( () ->Void )?
   
   //MARK: - Private propertes
   
@@ -19,26 +34,41 @@ final class ViewController: UIViewController {
   private let verticalSupportView = UIView()
   private let horizontalSupportView = UIView()
   private let trafficlightStartButton = UIButton()
-  private var trafficLightType: TrafficLightType = .red
   
-  //MARK: - Internal function
+  //MARK: - Internal funcs
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    settingLayout()
-    settingStyle()
+  func setColorForTraddicLight(_ trafficLightType: TrafficLightType) {
+    switch  trafficLightType {
+    case .red:
+      trafficlightStartButton.backgroundColor = .red
+      trafficlightStartButton.setTitle("NEXT", for: .normal)
+      yellowCircleView.backgroundColor = .yellow.withAlphaComponent(Constants.transparencyCircle)
+      greenCircleView.backgroundColor = .green.withAlphaComponent(Constants.transparencyCircle)
+      redCircleView.backgroundColor = .red
+    case .yellow:
+      trafficlightStartButton.backgroundColor = .yellow
+      trafficlightStartButton.setTitle("NEXT", for: .normal)
+      greenCircleView.backgroundColor = .green.withAlphaComponent(Constants.transparencyCircle)
+      yellowCircleView.backgroundColor = .yellow
+      redCircleView.backgroundColor = .red.withAlphaComponent(Constants.transparencyCircle)
+    case .green:
+      trafficlightStartButton.backgroundColor = .green
+      trafficlightStartButton.setTitle("NEXT", for: .normal)
+      greenCircleView.backgroundColor = .green
+      yellowCircleView.backgroundColor = .yellow.withAlphaComponent(Constants.transparencyCircle)
+      redCircleView.backgroundColor = .red.withAlphaComponent(Constants.transparencyCircle)
+    }
   }
 }
 
 //MARK: - Private functions
 
-private extension ViewController{
-  func settingLayout(){
+private extension MainScreenView {
+  func settingLayout() {
     [trafficlightsСorpusView, verticalSupportView,
      horizontalSupportView, trafficlightStartButton].forEach{
       $0.translatesAutoresizingMaskIntoConstraints = false
-      view.addSubview($0)
+      addSubview($0)
     }
     [redCircleView, yellowCircleView, greenCircleView].forEach{
       $0.translatesAutoresizingMaskIntoConstraints = false
@@ -52,11 +82,11 @@ private extension ViewController{
     NSLayoutConstraint.activate(
       [
         trafficlightsСorpusView.topAnchor.constraint(
-          equalTo: view.topAnchor,
+          equalTo: self.topAnchor,
           constant: Constants.trafficlightsСorpusTopPadding
         ),
         trafficlightsСorpusView.centerXAnchor.constraint(
-          equalTo: view.centerXAnchor
+          equalTo: self.centerXAnchor
         ),
         
         verticalStackCircles.topAnchor.constraint(
@@ -105,7 +135,7 @@ private extension ViewController{
           equalTo: trafficlightsСorpusView.bottomAnchor
         ),
         verticalSupportView.centerXAnchor.constraint(
-          equalTo: view.centerXAnchor
+          equalTo: self.centerXAnchor
         ),
         
         horizontalSupportView.widthAnchor.constraint(
@@ -115,7 +145,7 @@ private extension ViewController{
           equalToConstant: Constants.horizontalSupportHeight
         ),
         horizontalSupportView.centerXAnchor.constraint(
-          equalTo: view.centerXAnchor
+          equalTo: self.centerXAnchor
         ),
         horizontalSupportView.topAnchor.constraint(
           equalTo: verticalSupportView.bottomAnchor
@@ -126,14 +156,14 @@ private extension ViewController{
           constant: Constants.trafficlightStartButtonTopPadding
         ),
         trafficlightStartButton.centerXAnchor.constraint(
-          equalTo: view.centerXAnchor
+          equalTo: self.centerXAnchor
         )
       ]
     )
   }
   
   func settingStyle() {
-    view.backgroundColor = .darkGray
+    self.backgroundColor = .darkGray
     
     trafficlightsСorpusView.backgroundColor = .black
     verticalSupportView.backgroundColor = .black
@@ -155,51 +185,16 @@ private extension ViewController{
     trafficlightStartButton.setTitleColor(.black, for: .normal)
     trafficlightStartButton.setTitle("START", for: .normal)
     trafficlightStartButton.backgroundColor = .blue
-    trafficlightStartButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+    trafficlightStartButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
   }
   
   @objc
-  func buttonAction() {
-    switchState( )
-    setColorForTraddicLight()
-  }
-  
-  func switchState( ) {
-    switch trafficLightType {
-    case .red:
-      trafficLightType = .yellow
-    case .yellow:
-      trafficLightType = .green
-    case .green:
-      trafficLightType = .red
-    }
-  }
-  
-  func setColorForTraddicLight() {
-    switch  trafficLightType {
-    case .red:
-      trafficlightStartButton.backgroundColor = .red
-      trafficlightStartButton.setTitle("NEXT", for: .normal)
-      yellowCircleView.backgroundColor = .yellow.withAlphaComponent(Constants.transparencyCircle)
-      greenCircleView.backgroundColor = .green.withAlphaComponent(Constants.transparencyCircle)
-      redCircleView.backgroundColor = .red
-    case .yellow:
-      trafficlightStartButton.backgroundColor = .yellow
-      trafficlightStartButton.setTitle("NEXT", for: .normal)
-      greenCircleView.backgroundColor = .green.withAlphaComponent(Constants.transparencyCircle)
-      yellowCircleView.backgroundColor = .yellow
-      redCircleView.backgroundColor = .red.withAlphaComponent(Constants.transparencyCircle)
-    case .green:
-      trafficlightStartButton.backgroundColor = .green
-      trafficlightStartButton.setTitle("NEXT", for: .normal)
-      greenCircleView.backgroundColor = .green
-      yellowCircleView.backgroundColor = .yellow.withAlphaComponent(Constants.transparencyCircle)
-      redCircleView.backgroundColor = .red.withAlphaComponent(Constants.transparencyCircle)
-    }
+  func buttonTapped() {
+    buttonAction?()
   }
 }
 
-//MARK: - Constants
+//MARK: - Internal funckion
 
 private enum Constants {
   static let trafficlightsСorpusTopPadding: CGFloat = 125

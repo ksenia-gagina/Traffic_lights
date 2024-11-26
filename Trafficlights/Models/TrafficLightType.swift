@@ -4,6 +4,7 @@
 //
 //  Created by Ксения Гагина on 13.11.2024.
 //
+
 import Foundation
 
 enum TrafficLightType {
@@ -11,4 +12,5 @@ enum TrafficLightType {
   case yellow
   case green
 }
+
 
