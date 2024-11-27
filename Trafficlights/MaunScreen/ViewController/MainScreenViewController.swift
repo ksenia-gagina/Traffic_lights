@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainScreenViewController.swift
 //  Trafficlights
 //
 //  Created by Ксения Гагина on 05.11.2024.
@@ -34,7 +34,7 @@ final class MainScreenViewController: UIViewController {
 //MARK: - Private functions
 
 private extension MainScreenViewController {
-  func switchState( ) {
+  func switchState() {
     switch trafficLightType {
     case .red:
       trafficLightType = .yellow

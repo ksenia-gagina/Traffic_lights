@@ -61,6 +61,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		53265C572CF792C700F39EBF /* MaunScreen */ = {
+			isa = PBXGroup;
+			children = (
+				53265C502CF66E9A00F39EBF /* View */,
+				53265C4F2CF66E6700F39EBF /* ViewController */,
+				53265C4C2CF66CB400F39EBF /* Models */,
+			);
+			path = MaunScreen;
+			sourceTree = "<group>";
+		};
 		5350BB992CDAAB880006ED94 = {
 			isa = PBXGroup;
 			children = (
@@ -80,9 +90,7 @@
 		5350BBA42CDAAB880006ED94 /* Trafficlights */ = {
 			isa = PBXGroup;
 			children = (
-				53265C502CF66E9A00F39EBF /* View */,
-				53265C4F2CF66E6700F39EBF /* ViewController */,
-				53265C4C2CF66CB400F39EBF /* Models */,
+				53265C572CF792C700F39EBF /* MaunScreen */,
 				5350BBA52CDAAB880006ED94 /* AppDelegate.swift */,
 				5350BBA72CDAAB880006ED94 /* SceneDelegate.swift */,
 				5350BBAE2CDAAB8A0006ED94 /* Assets.xcassets */,

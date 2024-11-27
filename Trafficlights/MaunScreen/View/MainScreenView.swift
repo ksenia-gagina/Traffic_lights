@@ -1,5 +1,5 @@
 //
-//  Untitled.swift
+//  MainScreenView.swift
 //  Trafficlights
 //
 //  Created by Ксения Гагина on 27.11.2024.
@@ -22,7 +22,7 @@ final class MainScreenView: UIView {
   
   //MARK: - Internal propertes
   
-  var buttonAction: ( () ->Void )?
+  var buttonAction: (() ->Void )?
   
   //MARK: - Private propertes
   
@@ -38,22 +38,22 @@ final class MainScreenView: UIView {
   //MARK: - Internal funcs
   
   func setColorForTraddicLight(_ trafficLightType: TrafficLightType) {
-    switch  trafficLightType {
+    switch trafficLightType {
     case .red:
       trafficlightStartButton.backgroundColor = .red
-      trafficlightStartButton.setTitle("NEXT", for: .normal)
+      trafficlightStartButton.setTitle(Constants.textTheButtonBeforeLaunching, for: .normal)
       yellowCircleView.backgroundColor = .yellow.withAlphaComponent(Constants.transparencyCircle)
       greenCircleView.backgroundColor = .green.withAlphaComponent(Constants.transparencyCircle)
       redCircleView.backgroundColor = .red
     case .yellow:
       trafficlightStartButton.backgroundColor = .yellow
-      trafficlightStartButton.setTitle("NEXT", for: .normal)
+      trafficlightStartButton.setTitle(Constants.textTheButtonBeforeLaunching, for: .normal)
       greenCircleView.backgroundColor = .green.withAlphaComponent(Constants.transparencyCircle)
       yellowCircleView.backgroundColor = .yellow
       redCircleView.backgroundColor = .red.withAlphaComponent(Constants.transparencyCircle)
     case .green:
       trafficlightStartButton.backgroundColor = .green
-      trafficlightStartButton.setTitle("NEXT", for: .normal)
+      trafficlightStartButton.setTitle(Constants.textTheButtonBeforeLaunching, for: .normal)
       greenCircleView.backgroundColor = .green
       yellowCircleView.backgroundColor = .yellow.withAlphaComponent(Constants.transparencyCircle)
       redCircleView.backgroundColor = .red.withAlphaComponent(Constants.transparencyCircle)
@@ -183,7 +183,7 @@ private extension MainScreenView {
     greenCircleView.layer.cornerRadius = Constants.widthHeightCircle / 2
     
     trafficlightStartButton.setTitleColor(.black, for: .normal)
-    trafficlightStartButton.setTitle("START", for: .normal)
+    trafficlightStartButton.setTitle(Constants.textTheButtonAfterLaunch, for: .normal)
     trafficlightStartButton.backgroundColor = .blue
     trafficlightStartButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
   }
@@ -207,4 +207,8 @@ private enum Constants {
   static let trafficlightStartButtonTopPadding: CGFloat = 50
   static let verticalStackCirclesSpacing: CGFloat = 14
   static let transparencyCircle: CGFloat = 0.5
+  static let textTheButtonBeforeLaunching: String = "NEXT"
+  static let textTheButtonAfterLaunch: String = "START"
+  
+  
 }
