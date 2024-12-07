@@ -10,6 +10,8 @@
 		532930772D042B8800C7D034 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532930722D042B8800C7D034 /* MainScreenView.swift */; };
 		532930782D042B8800C7D034 /* TrafficLightType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532930702D042B8800C7D034 /* TrafficLightType.swift */; };
 		532930792D042B8800C7D034 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532930742D042B8800C7D034 /* MainScreenViewController.swift */; };
+		5329307E2D047BBD00C7D034 /* TrafficLightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329307D2D047BBD00C7D034 /* TrafficLightView.swift */; };
+		532930802D04FD3F00C7D034 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329307F2D04FD3F00C7D034 /* MainButton.swift */; };
 		5350BBA62CDAAB880006ED94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5350BBA52CDAAB880006ED94 /* AppDelegate.swift */; };
 		5350BBA82CDAAB880006ED94 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5350BBA72CDAAB880006ED94 /* SceneDelegate.swift */; };
 		5350BBAF2CDAAB8A0006ED94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5350BBAE2CDAAB8A0006ED94 /* Assets.xcassets */; };
@@ -19,6 +21,8 @@
 		532930702D042B8800C7D034 /* TrafficLightType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLightType.swift; sourceTree = "<group>"; };
 		532930722D042B8800C7D034 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		532930742D042B8800C7D034 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
+		5329307D2D047BBD00C7D034 /* TrafficLightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLightView.swift; sourceTree = "<group>"; };
+		5329307F2D04FD3F00C7D034 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		5350BBA22CDAAB880006ED94 /* Trafficlights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trafficlights.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5350BBA52CDAAB880006ED94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5350BBA72CDAAB880006ED94 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +75,15 @@
 			path = MainScreen;
 			sourceTree = "<group>";
 		};
+		5329307C2D047B7200C7D034 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				5329307D2D047BBD00C7D034 /* TrafficLightView.swift */,
+				5329307F2D04FD3F00C7D034 /* MainButton.swift */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
 		5350BB992CDAAB880006ED94 = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +103,7 @@
 		5350BBA42CDAAB880006ED94 /* Trafficlights */ = {
 			isa = PBXGroup;
 			children = (
+				5329307C2D047B7200C7D034 /* UIComponents */,
 				532930762D042B8800C7D034 /* MainScreen */,
 				5350BBA52CDAAB880006ED94 /* AppDelegate.swift */,
 				5350BBA72CDAAB880006ED94 /* SceneDelegate.swift */,
@@ -169,6 +183,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5350BBA62CDAAB880006ED94 /* AppDelegate.swift in Sources */,
+				5329307E2D047BBD00C7D034 /* TrafficLightView.swift in Sources */,
+				532930802D04FD3F00C7D034 /* MainButton.swift in Sources */,
 				532930772D042B8800C7D034 /* MainScreenView.swift in Sources */,
 				532930782D042B8800C7D034 /* TrafficLightType.swift in Sources */,
 				532930792D042B8800C7D034 /* MainScreenViewController.swift in Sources */,
