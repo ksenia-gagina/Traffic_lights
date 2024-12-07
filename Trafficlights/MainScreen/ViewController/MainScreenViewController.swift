@@ -24,6 +24,7 @@ final class MainScreenViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    
     moduleView.buttonAction = { [ weak self] in
       guard let self else { return }
       switchState()

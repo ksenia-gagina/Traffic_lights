@@ -1,5 +1,5 @@
 //
-//  Untitled.swift
+//  TrafficLightType.swift
 //  Trafficlights
 //
 //  Created by Ксения Гагина on 13.11.2024.

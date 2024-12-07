@@ -8,18 +8,7 @@
 import UIKit
 
 final class MainScreenView: UIView {
-  
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    
-    settingLayout()
-    settingStyle()
-  }
-  
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-  
+
   //MARK: - Internal propertes
   
   var buttonAction: (() ->Void )?
@@ -34,6 +23,19 @@ final class MainScreenView: UIView {
   private let verticalSupportView = UIView()
   private let horizontalSupportView = UIView()
   private let trafficlightStartButton = UIButton()
+
+// MARK: - Init
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    
+    settingLayout()
+    settingStyle()
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
   
   //MARK: - Internal funcs
   
@@ -41,19 +43,19 @@ final class MainScreenView: UIView {
     switch trafficLightType {
     case .red:
       trafficlightStartButton.backgroundColor = .red
-      trafficlightStartButton.setTitle(Constants.textTheButtonBeforeLaunching, for: .normal)
+      trafficlightStartButton.setTitle(Constants.textButtonBeforeLaunching, for: .normal)
       yellowCircleView.backgroundColor = .yellow.withAlphaComponent(Constants.transparencyCircle)
       greenCircleView.backgroundColor = .green.withAlphaComponent(Constants.transparencyCircle)
       redCircleView.backgroundColor = .red
     case .yellow:
       trafficlightStartButton.backgroundColor = .yellow
-      trafficlightStartButton.setTitle(Constants.textTheButtonBeforeLaunching, for: .normal)
+      trafficlightStartButton.setTitle(Constants.textButtonBeforeLaunching, for: .normal)
       greenCircleView.backgroundColor = .green.withAlphaComponent(Constants.transparencyCircle)
       yellowCircleView.backgroundColor = .yellow
       redCircleView.backgroundColor = .red.withAlphaComponent(Constants.transparencyCircle)
     case .green:
       trafficlightStartButton.backgroundColor = .green
-      trafficlightStartButton.setTitle(Constants.textTheButtonBeforeLaunching, for: .normal)
+      trafficlightStartButton.setTitle(Constants.textButtonBeforeLaunching, for: .normal)
       greenCircleView.backgroundColor = .green
       yellowCircleView.backgroundColor = .yellow.withAlphaComponent(Constants.transparencyCircle)
       redCircleView.backgroundColor = .red.withAlphaComponent(Constants.transparencyCircle)
@@ -83,7 +85,7 @@ private extension MainScreenView {
       [
         trafficlightsСorpusView.topAnchor.constraint(
           equalTo: self.topAnchor,
-          constant: Constants.trafficlightsСorpusTopPadding
+          constant: Constants.trafficLightsСorpusTopPadding
         ),
         trafficlightsСorpusView.centerXAnchor.constraint(
           equalTo: self.centerXAnchor
@@ -126,7 +128,7 @@ private extension MainScreenView {
         ),
         
         verticalSupportView.widthAnchor.constraint(
-          equalToConstant: Constants.verticalSupportWidt
+          equalToConstant: Constants.verticalSupportWidth
         ),
         verticalSupportView.heightAnchor.constraint(
           equalToConstant: Constants.verticalSupportHeight
@@ -139,7 +141,7 @@ private extension MainScreenView {
         ),
         
         horizontalSupportView.widthAnchor.constraint(
-          equalToConstant: Constants.horizontalSupportWidt
+          equalToConstant: Constants.horizontalSupportWidth
         ),
         horizontalSupportView.heightAnchor.constraint(
           equalToConstant: Constants.horizontalSupportHeight
@@ -183,7 +185,7 @@ private extension MainScreenView {
     greenCircleView.layer.cornerRadius = Constants.widthHeightCircle / 2
     
     trafficlightStartButton.setTitleColor(.black, for: .normal)
-    trafficlightStartButton.setTitle(Constants.textTheButtonAfterLaunch, for: .normal)
+    trafficlightStartButton.setTitle(Constants.textButtonAfterLaunch, for: .normal)
     trafficlightStartButton.backgroundColor = .blue
     trafficlightStartButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
   }
@@ -194,21 +196,19 @@ private extension MainScreenView {
   }
 }
 
-//MARK: - Internal funckion
+//MARK: - Constants
 
 private enum Constants {
-  static let trafficlightsСorpusTopPadding: CGFloat = 125
+  static let trafficLightsСorpusTopPadding: CGFloat = 125
   static let verticalStackCirclesDistance: CGFloat = 15
   static let widthHeightCircle: CGFloat = 75
-  static let verticalSupportWidt: CGFloat = 25
+  static let verticalSupportWidth: CGFloat = 25
   static let verticalSupportHeight: CGFloat = 125
-  static let horizontalSupportWidt: CGFloat = 75
+  static let horizontalSupportWidth: CGFloat = 75
   static let horizontalSupportHeight: CGFloat = 25
   static let trafficlightStartButtonTopPadding: CGFloat = 50
   static let verticalStackCirclesSpacing: CGFloat = 14
   static let transparencyCircle: CGFloat = 0.5
-  static let textTheButtonBeforeLaunching: String = "NEXT"
-  static let textTheButtonAfterLaunch: String = "START"
-  
-  
+  static let textButtonBeforeLaunching: String = "NEXT"
+  static let textButtonAfterLaunch: String = "START"
 }
